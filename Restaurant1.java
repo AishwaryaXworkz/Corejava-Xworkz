@@ -1,15 +1,16 @@
-class Restaurant{
+class Restaurant1{
 	static String menuNames[]={null, null, null, null, null,null,null,null,null,null,null,null,null,null,null};
 	static int index;
 	public static boolean addMenuName(String menuName){
 		System.out.println("addMenuName method started");
 		boolean isAdded=false;
-		if(menuName!=null){
+		if(menuName!=null && index<menuNames.length ){
 			menuNames[index++]=menuName;
 			isAdded=true;
 		}
 		else{
 		System.out.println("Enter valid menuName");
+		System.out.println("oops......maximum menuName");
 		}
 		System.out.println("addMenuName method ended");
 		return isAdded;
@@ -35,5 +36,16 @@ class Restaurant{
 		}
 		System.out.println("updateMenuName method ended");
 		return isUpdated;
+	}
+	public static String getMenuName(String menuName)
+	{
+	for(int index=0;index<menuNames.length;index++)
+	{
+	if(menuNames[index].equals(menuName))
+	{
+	return menuNames[index];
+	}
+	}
+	return "no menu Name found";
 	}
 }

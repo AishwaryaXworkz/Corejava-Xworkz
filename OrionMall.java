@@ -4,12 +4,12 @@ class OrionMall{
 	public static boolean addShopName(String shopName){
 		System.out.println("addShopName method started");
 		boolean isAdded=false;
-		if(shopName!=null){
+		if(shopName!=null && index<shopNames.length){
 			shopNames[index++]=shopName;
 			isAdded=true;
 		}
 		else{
-		System.out.println("Enter valid shopName");
+		System.out.println("oops......maximum shopName");
 		}
 		System.out.println("addShopName method ended");
 		return isAdded;
@@ -35,5 +35,16 @@ class OrionMall{
 		}
 		System.out.println("updateShopName method ended");
 		return isUpdated;
+	}
+	public static String getShopName(String shopName)
+	{
+	for(int index=0;index<shopNames.length;index++)
+	{
+	if(shopNames[index].equals(shopName))
+	{
+	return shopNames[index];
+	}
+	}
+	return "no shop Name found";
 	}
 }

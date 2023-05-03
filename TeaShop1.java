@@ -6,13 +6,13 @@ public static boolean addTeaName(String teaName)
  {
 System.out.println("method started");
 boolean isAdded=false;
-if(teaName!=null){
+if(teaName!=null && index<teaNames.length){
 teaNames[index++]=teaName;
 System.out.println("tea added");
 isAdded=true;
 }
 else{
-System.out.println("the tea is not found");
+System.out.println("oops......maximum teaName");
 } 
 System.out.println("method ended");
 return isAdded;
@@ -43,4 +43,15 @@ public static boolean updateTeaName(String oldTeaName , String updatedTeaName)
 	System.out.println("updatedTeaName method ended");
 	return isupdated;
 }
+public static String getTeaName(String teaName)
+	{
+	for(int index=0;index<teaNames.length;index++)
+	{
+	if(teaNames[index].equals(teaName))
+	{
+	return teaNames[index];
+	}
+	}
+	return "no tea Name found";
+	}
 }

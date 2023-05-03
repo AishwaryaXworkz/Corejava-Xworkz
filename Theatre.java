@@ -4,12 +4,12 @@ class Theatre{
 	public static boolean addMovieName(String movieName){
 		System.out.println("addMovieName method started");
 		boolean isAdded=false;
-		if(movieName!=null){
+		if(movieName!=null && index<movieNames.length){
 			movieNames[index++]=movieName;
 			isAdded=true;
 		}
 		else{
-		System.out.println("Enter valid movieName");
+		System.out.println("oops......maximum movieName");
 		}
 		System.out.println("addMovieName method ended");
 		return isAdded;
@@ -35,5 +35,16 @@ class Theatre{
 		}
 		System.out.println("updateMovieName method ended");
 		return isUpdated;
+	}
+	public static String getMovieName(String movieName)
+	{
+	for(int index=0;index<movieNames.length;index++)
+	{
+	if(movieNames[index].equals(movieName))
+	{
+	return movieNames[index];
+	}
+	}
+	return "no movie Name found";
 	}
 }

@@ -1,5 +1,6 @@
 class OrionMallTester{
 	public static void main(String shops[]){
+	System.out.println("Main method started");
 		OrionMall.addShopName("Nykaa");
         OrionMall.addShopName("Feeling perfume Bar");
 		OrionMall.addShopName("Parcos");
@@ -15,9 +16,13 @@ class OrionMallTester{
 		OrionMall.addShopName("Gopizza");
 		OrionMall.addShopName("Domino's");
 		OrionMall.addShopName("Empire");
+		OrionMall.addShopName("GoHut");
 		OrionMall.getShopNames();
 	OrionMall.updateShopName("Art","Entertainment");
    OrionMall.getShopNames();
+   String isPresent =OrionMall.getShopName("Gopizza");
+		System.out.println("search shop :"+isPresent);
+		System.out.println("Main method ended");
 	}
 
 }
