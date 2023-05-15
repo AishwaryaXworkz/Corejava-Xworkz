@@ -6,8 +6,17 @@ class Specs
 	double lensPower;
 	int warranty; 
 	
-	public void clearVision()
+	public Specs ()
 	{
-		System.out.println("Specs features");
+		
 	}
+	public Specs(String color,String brandName,double  price, double lensPower,int warranty)
+	{
+	System.out.println("Specs features");
+	this.color=color;
+	this.brandName=brandName;
+	this.price=price;
+	this.lensPower=lensPower;
+	this.warranty=warranty;
+}
 }

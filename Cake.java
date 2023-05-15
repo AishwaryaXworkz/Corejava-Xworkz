@@ -1,13 +1,21 @@
 class Cake
 {
-	String color;
+	 static String color;
 	String shape;
 	double price;
 	String weight;
 	String  flavour;
 	
-	public void toEat()
+	public Cake()
 	{
-		System.out.println("Cake features");
+		System.out.println("list of cakes available");
 	}
+	public Cake(String color,String shape,double price,String flavour,String weight){
+    System.out.println("Cake features");
+	 this.color=color;
+	 this.shape=shape;
+	 this.price=price;
+	 this.flavour=flavour;
+	 this.weight=weight;
+}
 }
