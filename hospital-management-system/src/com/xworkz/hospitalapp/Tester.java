@@ -1,5 +1,8 @@
 package com.xworkz.hospitalapp;
 
+import com.xworkz.hospitalapp.exception.DiseaseNotFoundException;
+import com.xworkz.hospitalapp.exception.PatientIdNotFoundException;
+import com.xworkz.hospitalapp.exception.WardNotFoundException;
 import com.xworkz.hospitalapp.location.*;
 import com.xworkz.hospitalapp.constant.Gender;
 import com.xworkz.hospitalapp.constant.GovtId;
@@ -94,12 +97,21 @@ public class Tester {
 
                     case 2:
                         System.out.println("enter the patient wardnumber");
+                        try{
                         hospital.getPatientNameByWard(sc.nextInt());
+                        }
+                        catch (WardNotFoundException e){
+                            e.printStackTrace();
+                        }
                         break;
 
                     case 3:
                         System.out.println("enter the patient disease name");
-                        hospital.getPatientNameByDiseaseName(sc.next());
+                        try {
+                            hospital.getPatientNameByDiseaseName(sc.next());
+                        }catch (DiseaseNotFoundException e){
+                            e.printStackTrace();
+                        }
                         break;
 
                     case 4:
@@ -119,7 +131,15 @@ public class Tester {
 
                     case 7:
                         System.out.println("enter the patient id");
-                        hospital.getPatientById(sc.nextInt());
+                        try {
+
+                        Patient patient1=hospital.getPatientById(sc.nextInt());
+                        System.out.println(patient1);
+                    }
+                    catch (PatientIdNotFoundException e){
+                            e.printStackTrace();
+                    }
+
                         break;
 
                     case 8:
@@ -129,7 +149,7 @@ public class Tester {
 
                     case 9:
                         System.out.println("Enter id to find patient street name: ");
-                        hospital.getPatientStreetNameById(sc.nextInt());
+                        hospital.getPatientStreetNameByPatientId(sc.nextInt());
                         break;
 
                     case 10:

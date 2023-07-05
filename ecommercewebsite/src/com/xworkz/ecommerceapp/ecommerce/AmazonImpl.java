@@ -1,6 +1,7 @@
 package com.xworkz.ecommerceapp.ecommerce;
 
 import com.xworkz.ecommerceapp.customer.Customer;
+import com.xworkz.ecommerceapp.exception.EmailNotFoundException;
 import lombok.Data;
 
 @Data
@@ -44,40 +45,44 @@ public class AmazonImpl implements Ecommerce {
     }
 
     @Override
-    public String getCustomerByAddress(String address) {
-        String[] str = new String[5];
-        for (int i = 0; i < this.customer.length; i++)
-            if (this.customer[i].getAddress().equals(address)) {
-                System.out.println(this.customer[i]);
-            } else {
-                System.out.println("address not matched");
+    public Customer getCustomerByAddress(String address) {
+        System.out.println("invoking the method");
+        Customer c=null;
+        for(Customer customer1:customer){
+            if(customer1.getAddress().equals(address)){
+                System.out.println(c=customer1);
             }
-        return "str";
+
+        }
+        return c;
+
     }
 
     @Override
     public String getCustomerNameByCustomerId(int customerId) {
         System.out.println("invoked");
-        for (int i = 0; i < this.customer.length; i++) {
-            if (this.customer[i].getCustomerId() == customerId) {
-                StringBuilder customerName = new StringBuilder();
-                customerName = customerName.append(this.customer[i].getCustomerName());
-                System.out.println(customerName);
+       String str=null;
+        for(Customer cust:customer){
+            if(cust.getCustomerId()==(customerId)){
+                System.out.println(str=cust.getCustomerName());
             }
         }
-        return "not found";
-
+        return str;
     }
 
     @Override
     public boolean updateCustomerEmailIdByCustomerId(int existingId, String updateEmailId) {
         boolean isUpdated=false;
-        for(int i=0;i<customer.length;i++) {
-            if (this.customer[i].getCustomerName().equals(existingId)) {
-                this.customer[i].setEmail(updateEmailId);
-                isUpdated = true;
-                System.out.println("EmailId is updated");
-                System.out.println(this.customer[i]);
+        for(Customer c:customer){
+            if(c.getCustomerId()==(existingId)){
+                c.setEmail(updateEmailId);
+                isUpdated=true;
+                System.out.println(c);
+
+            }
+            else {
+                EmailNotFoundException exception=new EmailNotFoundException(existingId,updateEmailId);
+                throw exception;
             }
         }
         return isUpdated;
@@ -89,12 +94,11 @@ public class AmazonImpl implements Ecommerce {
     @Override
     public boolean updateCustomerAddressByCustomerName(String exitingName, String updatedAddress) {
         boolean isUpdated=false;
-            for(int i=0;i<customer.length;i++) {
-                if (this.customer[i].getCustomerName().equals(exitingName)) {
-                    this.customer[i].setAddress(updatedAddress);
-                    isUpdated = true;
-                    System.out.println("Address is updated");
-                    System.out.println(this.customer[i]);
+           for(Customer c:customer){
+               if(c.getCustomerName().equals(exitingName)){
+                   c.setAddress(updatedAddress);
+                   isUpdated=true;
+                   System.out.println(c);
                 }
             }
             return isUpdated;
@@ -105,14 +109,14 @@ public class AmazonImpl implements Ecommerce {
     @Override
     public Customer getCustomerById(int customerId) {
             System.out.println("invoked");
-            for (int i = 0; i < this.customer.length; i++) {
-                if (this.customer[i].getCustomerId() == customerId) {
-                    StringBuilder customer = new StringBuilder();
-                    customer= customer.append(this.customer[i].getCustomerName());
-                    System.out.println(customer);
+            Customer cust=null;
+            for(Customer c:customer){
+                if(c.getCustomerId()==(customerId)){
+                    System.out.println(cust=c);
                 }
             }
-            return null;
+
+            return cust;
 
         }
 
