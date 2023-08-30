@@ -1,0 +1,5 @@
+com\xworkz\netflix\controller\NetflixSearch.class
+com\xworkz\netflix\controller\NetflixReadAll.class
+com\xworkz\netflix\entity\NetflixEntity.class
+com\xworkz\netflix\controller\NetflixDelete.class
+com\xworkz\netflix\controller\NetflixRunner.class
